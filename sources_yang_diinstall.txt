@@ -2,3 +2,4 @@
 - clerk.com => user Management
 - motion.dev => untuk animasi di react
 - next-sanity(sanity.io) => admin panel
+- zustand =>

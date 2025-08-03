@@ -14,7 +14,7 @@ const NoProductAvailable = ({
     <div
       className={cn(
         "flex flex-col items-center justify-center py-10 min-h-80 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10"
-      )}
+      , className)}
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}

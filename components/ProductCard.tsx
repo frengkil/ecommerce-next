@@ -8,8 +8,8 @@ import AddToCartButton from "./AddToCartButton";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="group text-sm rounded-lg overflow-hidden">
-      <div className="relative bg-gradient-to-r from-zinc-200 via-zinc-300 to-zinc-200 overflow-hidden ">
+    <div className="group text-sm rounded-lg overflow-hidden ">
+      <div className="relative bg-gradient-to-r  from-zinc-200 via-zinc-300 to-zinc-200 overflow-hidden ">
         {product.images && (
           <Link href={`/product/${product?.slug?.current}`}>
             <Image

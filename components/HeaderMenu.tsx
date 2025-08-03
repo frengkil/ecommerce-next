@@ -1,23 +1,40 @@
 "use client";
-import { headerData } from "@/constants";
+import { CATEGORIES_QUERYResult } from "@/sanity.types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import path from "path";
 import React from "react";
 
-const HeaderMenu = () => {
+const HeaderMenu = ({ categories }: { categories: CATEGORIES_QUERYResult }) => {
   const pathName = usePathname();
+
   return (
     <div className="hidden md:inline-flex items-center gap-5 text-sm capitalize font-semibold">
-      {headerData?.map((item) => (
+      <Link
+        href={"/ "}
+        className={`hover:text-darkColor hoverEffect relative group ${pathName === "/" && "text-darkColor"}`}
+      >
+        Home
+        <span
+          className={`absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-darkColor hoverEffect group-hover:w-1/2 group-hover:left-0 ${pathName === "/" && "w-1/2"}`}
+        />
+        <span
+          className={`absolute -bottom-0.5 right-1/2 w-0 h-0.5 bg-darkColor hoverEffect group-hover:w-1/2 group-hover:right-0 ${pathName === "/" && "w-1/2"}`}
+        />
+      </Link>
+      {categories?.map((category) => (
         <Link
-          key={item.title}
-          href={item.href}
-          className={`hover:text-darkColor hoverEffect relative group ${pathName === item.href && "text-darkColor"}`}
+          key={category._id}
+          href={`/category/${category.slug?.current}`}
+          className={`hover:text-darkColor hoverEffect relative group ${pathName === `/category/${category.slug?.current}` && "text-darkColor"}`}
         >
-          {item.title}
-          <span className={`absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-darkColor hoverEffect group-hover:w-1/2 group-hover:left-0 ${pathName === item.href &&  "w-1/2"}`}/>
-          <span className={`absolute -bottom-0.5 right-1/2 w-0 h-0.5 bg-darkColor hoverEffect group-hover:w-1/2 group-hover:right-0 ${pathName === item.href &&  "w-1/2"}`} />
+          {category.title}
+          <span
+            className={`absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-darkColor hoverEffect group-hover:w-1/2 group-hover:left-0 ${pathName === `/category/${category.slug?.current}` && "w-1/2"}`}
+          />
+          <span
+            className={`absolute -bottom-0.5 right-1/2 w-0 h-0.5 bg-darkColor hoverEffect group-hover:w-1/2 group-hover:right-0 ${pathName === `/category/${category.slug?.current}` && "w-1/2"}`}
+          />
         </Link>
       ))}
     </div>
